@@ -1,0 +1,108 @@
+﻿@page "/playlist"
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Playlist</PageTitle>
+
+<h1>Playlist</h1>
+
+<div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+        Tracks
+    </button>
+    @foreach (var track in tracks)
+    {
+        <button type="button" class="list-group-item list-group-item-action" @onclick="(() => ShowModal(track))">@track.name</button>
+    }
+</div>
+
+<div class="modal" tabindex="-1" style="display: @(modalVisible ? "block" : "none")">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">MP3 player</h5>
+                <button type="button" class="btn-close" @onclick="(() => CloseModal())"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Add your form elements here -->
+                <div class="details">
+                    <div id="nowplaying">PLAYING x OF y</div>
+                    <div id="trackname">Track Name</div>
+                    <div id="trackartist">Track Artist</div>
+                </div>
+
+                <label for="trackRange" class="form-label" id="txttrackslider">Track</label>
+                <input type="range" class="form-range" min="0" max="100" step="1" value="0" id="trackslider" onchange="settrack()">
+
+                <label for="VolumeRange" class="form-label" id="txtvolumeslider">Volume</label>
+                <input type="range" class="form-range" min="0" max="100" step="1" value="30" id="volumeslider" onchange="setvolume()">
+
+                <hr />
+                <!-- Add your form elements here -->
+                <button id="playButton" class="btn btn-success" onclick="playTrack()">Play</button>
+                <button type="button" class="btn btn-danger" onclick="pauseTrack()">Pause</button>
+                <button type="button" class="btn btn-warning" onclick="resumeTrack()">Resume</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="(() => CloseModal())">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<Track> tracks = new List<Track>
+    {
+        new Track { id=0, name = "Stay", artist = "The Kid LAROI, Justin Bieber", music = "music/stay.mp3" },
+        new Track { id=1, name = "Falling Down", artist = "Wid Cards", music = "music/fallingdown.mp3" },
+        new Track { id=2, name = "Faded", artist = "Alan Walker", music = "music/Faded.mp3" },
+        new Track { id=3, name = "Rather Be", artist = "Clean Bandit", music = "music/Rather Be.mp3" }
+    };
+
+    private async Task ShowModal(Track track)
+    {
+        selectedItem = track;
+        await loadaudio();
+        modalVisible = true;
+    }
+
+    private Track? selectedItem;
+    private bool modalVisible = false;
+
+    private async Task CloseModal()
+    {
+        await pauseTrack();
+        modalVisible = false;
+    }
+
+    public class Track
+    {
+        public int id { get; set; }
+        public string? name { get; set; }
+        public string? artist { get; set; }
+        public string? music { get; set; }
+    }
+
+    private List<Track>? param1;
+    private int param2 = 0;
+
+    private async Task loadTrack()
+    {
+        await JSRuntime.InvokeVoidAsync("loadTrack", 0);
+    }
+
+    private async Task loadaudio()
+    {
+        if (selectedItem != null)
+        {
+            param1 = tracks;
+            param2 = selectedItem.id;
+        }
+        await JSRuntime.InvokeVoidAsync("loadaudio", param1, param2);
+    }
+
+    private async Task pauseTrack()
+    {
+        await JSRuntime.InvokeVoidAsync("pauseTrack");
+    }
+
+}

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP3v4.Server", "MP3v4\Server\MP3v4.Server.csproj", "{F39562EA-CAD5-492C-9612-24AC376485FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP3v4.Client", "MP3v4\Client\MP3v4.Client.csproj", "{B876571A-22FA-49AD-BF1E-E22298F118D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP3v4.Shared", "MP3v4\Shared\MP3v4.Shared.csproj", "{F57FDD09-934D-4EB8-8ABE-DC6F27EC3AF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F39562EA-CAD5-492C-9612-24AC376485FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39562EA-CAD5-492C-9612-24AC376485FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39562EA-CAD5-492C-9612-24AC376485FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39562EA-CAD5-492C-9612-24AC376485FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B876571A-22FA-49AD-BF1E-E22298F118D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B876571A-22FA-49AD-BF1E-E22298F118D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B876571A-22FA-49AD-BF1E-E22298F118D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B876571A-22FA-49AD-BF1E-E22298F118D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F57FDD09-934D-4EB8-8ABE-DC6F27EC3AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F57FDD09-934D-4EB8-8ABE-DC6F27EC3AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F57FDD09-934D-4EB8-8ABE-DC6F27EC3AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F57FDD09-934D-4EB8-8ABE-DC6F27EC3AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {973224D6-6D04-41C0-82F0-2B70A288847C}
+	EndGlobalSection
+EndGlobal
